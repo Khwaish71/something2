@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  spring-boot-app:
+  build: .
+  ports:
+    -"8080:8080"    
+    - depends_on:
+    - db
+  mysqldb:
+    image: mysql:5.7
+    ports:
+    - "3306:3306"
+    environment:
+    - POSTGRES_DB=db_example
+    - POSTGRES_USER=sammy
+    - POSTGRES_PASSWORD=password
